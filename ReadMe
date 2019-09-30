@@ -1,6 +1,8 @@
 In-Memory Database
+===
 
 Method 1: 
+---
   I used LinkedHashMap to store the row information.
   The time complexity for LinkedHashMap is O(1) for (put, remove, get).
   
@@ -57,7 +59,7 @@ Group By a column, and GET specific count of rows from table: signature public L
 
 
 Method 2:
-
+---
 
 I did not implement this method.
 The idea is: I still use the LinkedHashMap to store the row information, and I will use a extra TreeMap to store the rows.
