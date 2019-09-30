@@ -35,7 +35,7 @@ UpdateRow:              signature:  public boolean updateRow(int rowKey, String[
 Get All rows from a table:        signature :  public Map<Integer, DbRow> getAllRows() 
     Time complexity:  O (1)   
     Space complexity:   O(1) extra  
-    But for the safety, I copy the Map and return the new map.
+    For safty, I do not want my tableMap can be visited from outside. So I copy a new tableMap and return this new Map.
     Time complexity:  O (n)        n is the number of rows in the table.   
     Space complexity:   O(n)       
     
@@ -65,11 +65,11 @@ I did not implement this method.
 The idea is: I still use the LinkedHashMap to store the row information, and I will use some extra TreeMap to store the rows.
 Map<String, List<DbRow>> sortedMap = new TreeMap<>();
 the Key is the specific column which can be defined as sortedColumn.
+If the total space for method 1 is method1_space, the total space for method2 is (number of sortedColumn * method1_space).
 
-
-Int this method
-The insert and delete and update opertation Time complexity is O(logn)              n is the number of rows in the table.
-                                            Space complexity is  O(the number of sortedColumn * n).
+In this method
+The insert and delete and update opertation Time complexity is O(logn)      n is the number of rows in the table.
+                                            
 
 Get All rows from a table:        
     Time complexity:  O (1)   
@@ -83,7 +83,7 @@ Get specific count of rows from a table:
     Space complexity:  O(K)                                             
 
 SORT by a column,and GET specific count of rows from table: 
-    if the column is the sortedColumn: 
+    if the column is one of sortedColumns: 
         Time complexity:   O(k)    k is the count of rows from table: 
         Space complexity:  O(k)      
     else:
