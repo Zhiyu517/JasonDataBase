@@ -94,5 +94,8 @@ SORT by a column,and GET specific count of rows from table:
 Group By a column, and GET specific count of rows from table: 
     Time complexity:  O(n)   n is the number of rows in the table.
     Space complexity: O(n)   
-
-
+    
+    
+    
+For concurrent of read/writes.
+I used the ReadWriteLock to implement the concurrent of read/writes.
