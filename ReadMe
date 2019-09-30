@@ -1,1 +1,96 @@
+In-Memory Database
+
+Method 1: 
+  I used LinkedHashMap to store the row information.
+  The time complexity for LinkedHashMap is O(1) for (put, remove, get).
+  
+1.
+Createadatabase:        signature: public DB createDataBase(String name)
+    Time complexity:  O (1)
+    Space complexity: O (1)
+    
+2.
+Createatable:            signature: public Table createTable(String tableName, String[][] coloumAndType)
+    Time complexity: O (coloumAndType.size())
+    Space complexity: O (coloumAndType.size())
+    
+3.
+Insertrow:               signature: public boolean insertRow(String[][] newRow) 
+    Time complexity: O (newRow.size())
+    Space complexity: O (newRow.size())
+    
+4.
+DeleteRow:              signature:   public boolean deleteRow(int rowKey) 
+    Time complexity: O (1)
+    Space complexity: O (1)
+    
+5.
+UpdateRow:              signature:  public boolean updateRow(int rowKey, String[] updatedMessage)
+    Time complexity: O (1)
+    Space complexity: O (1)
+    
+6.
+Get All rows from a table:        signature :  public Map<Integer, DbRow> getAllRows() 
+    Time complexity:  O (1)   
+    Space complexity:   O(1) extra  
+    But for the safety, I copy the Map and return the new map.
+    Time complexity:  O (n)        n is the number of rows in the table.   
+    Space complexity:   O(n)       
+    
+7.
+Get specific count of rows from a table:     signature :   public Map<Integer, DbRow> firstKRows(int k) 
+    Time complexity:   O(K)   k is the specific count of rows.
+    Space complexity:  O(K) 
+
+    
+8.
+SORT by a column,and GET specific count of rows from table:  signature: public List<DbRow> sortBy(String columnName, int num) 
+    Time complexity:   O(nlogn)    n is the number of rows in the table
+    Space complexity:  O(n)  
+    
+9.
+Group By a column, and GET specific count of rows from table: signature public List<Object[]> groupBy(String columnName, int k) 
+      for this question I just return the count of the same value in the colunm.
+    Time complexity:  O(n)   n is the number of rows in the table.
+    Space complexity: O(n)   
+
+
+
+Method 2:
+
+
+I did not implement this method.
+The idea is: I still use the LinkedHashMap to store the row information, and I will use a extra TreeMap to store the rows.
+Map<String, List<DbRow>> sortedMap = new TreeMap<>();
+the Key is the specific column which can be defined as sortedColumn.
+
+
+Int this method
+The insert and delete and update opertation Time complexity is O(logn)              n is the number of rows in the table.
+                                            Space complexity is  O(the number of sortedColumn * n).
+
+Get All rows from a table:        
+    Time complexity:  O (1)   
+    Space complexity:   O(1) extra  
+    But for the safety, I copy the Map and return the new map.
+    Time complexity:  O (n)        n is the number of rows in the table.   
+    Space complexity:   O(n)       
+    
+Get specific count of rows from a table:    
+    Time complexity:   O(K)   k is the specific count of rows.
+    Space complexity:  O(K)                                             
+
+SORT by a column,and GET specific count of rows from table: 
+    if the column is the sortedColumn: 
+        Time complexity:   O(k)    k is the count of rows from table: 
+        Space complexity:  O(k)      
+    else:
+        Time complexity:   O(nlogn)    n is the number of rows in the table
+        Space complexity:  O(n)  
+    
+
+Group By a column, and GET specific count of rows from table: 
+    Time complexity:  O(n)   n is the number of rows in the table.
+    Space complexity: O(n)   
+
 
